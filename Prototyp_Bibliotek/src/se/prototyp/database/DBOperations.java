@@ -66,7 +66,54 @@ public class DBOperations {
 		}
 		return list;
 	}
+	public ArrayList<String> getBooks(String title){
+		ArrayList<String> list = new ArrayList<String>();
+		String bookLine;
+		try{
+			preparedStatement = dbConnect.connection.prepareStatement("SELECT * from litterature WHERE Titel = ?");
+			preparedStatement.setString(1, title);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				bookLine = "";
+				bookLine = bookLine + "ID: " +  String.valueOf(resultSet.getInt(1));
+				bookLine = bookLine + "Titel: " + resultSet.getString(2);
+				list.add(bookLine);
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return list;
+	}
+	public int addLiterature(String title){
+		int change = 0;
+		try{
+			preparedStatement = dbConnect.connection.prepareStatement("INSERT INTO litterature (Titel) VALUES (?)");
+			preparedStatement.setString(1, title);
+			change = preparedStatement.executeUpdate();
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return change;
 		
+	}
+	public int getNumberOfTitles(){
+		int amount = 0;
+		try{
+			preparedStatement = dbConnect.connection.prepareStatement("SELECT * from litterature");
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				amount++;
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return amount;
+		
+	}
+
 
 	
 }
