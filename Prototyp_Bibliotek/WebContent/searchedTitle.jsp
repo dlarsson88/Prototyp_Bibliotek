@@ -4,25 +4,26 @@
     import="java.text.SimpleDateFormat" import="java.util.Date"
     import="java.util.Collections"%>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Bibliotek Informatika</title>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/mystyles.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>	
     <script src="js/myscripts.js"></script>
-
+	
+	<link rel="shortcut icon" href="http://www.odontologi.gu.se/kirurgi/img/gu_logga.png">
 </head>
 <body>
 <div class="page-header">
 <h1>  <a href="main.jsp"> <span class="glyphicon glyphicon-book"></span> Bibliotek Informatika</a> <small>Administration</small> </h1>
 </button>
 </div>
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">	
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -42,7 +43,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lista <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li id="listaAlltKnapp"><a href="#">Lista allt<span class="badge">
+            <li id="listaAlltKnapp"><a href="#">Samtliga verk<span class="badge">
             <%
             GetLiteratureService gts = new GetLiteratureService();
   			int amount = gts.getNumberOfTitles()+1;
@@ -51,23 +52,18 @@
             </span></a></li>
             <li id="listaEnskildTitelKnapp"><a href="#">Enskilt verk</a></li>
             <li id="pagaendeLanKnapp"><a href="#">Pågående lån</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">xxx</a></li>
+            <li><a href="#">xxx</a></li>
+            <li><a href="#">xxx</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#">xxx</a></li>
           </ul>
         </li>
       </ul>
@@ -79,9 +75,9 @@
 
 
 	<form id = "katalogisera" action="catalog" method = "post">
-		Titel: <input type = "text" name = "title" />
+		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..." />
 		<br>
-		<input type = "submit" value="Lägg in" class="btn btn-primary"/>
+		<input type = "submit" value="Lägg till" class="btn btn-primary"/>
 	</form>
 
 
