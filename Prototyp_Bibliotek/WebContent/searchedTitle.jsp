@@ -74,9 +74,9 @@
 
 
 
-	<form id = "katalogisera" action="catalog" method = "post">
-		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..." />
-		<br>
+	<form id = "katalogisera" action="catalog" method = "post" class="navbar-form navbar-left">
+		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..."/>
+		<br><br>
 		<input type = "submit" value="Lägg till" class="btn btn-primary"/>
 	</form>
 
