@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" name="viewport" content="width=device-width">
 <title>Bibliotek Informatika</title>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
