@@ -2,24 +2,30 @@
     pageEncoding="ISO-8859-1"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"
-    import="java.util.Collections"%>
+    import="java.util.Collections" import="se.prototyp.services.GetLoansService"%>
     
 <!DOCTYPE html>
 <html>	
 <head>
-<meta http-equiv="Content-Type" name="viewport" content="width=device-width">
-
-<title>Bibliotek Informatika</title>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/mystyles.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>	
     <script src="js/myscripts.js"></script>
+	<meta http-equiv="Content-Type" name="viewport" content="width=device-width">
+	<title>Bibliotek Informatika</title>
 
 	<link rel="shortcut icon" href="http://www.odontologi.gu.se/kirurgi/img/gu_logga.png">
 </head>
 <body>
+
+<%
+String savedUserName = (String) session.getAttribute("savedUserName");
+String savedFirstName = (String) session.getAttribute("savedFirstName");
+String savedFamilyName = (String) session.getAttribute("savedFamilyName");
+String savedPassword = (String) session.getAttribute("savedPassword");
+%>
 
 <div class="page-header">
 <h1>  <a href="main.jsp"> <span class="glyphicon glyphicon-book"></span> Bibliotek Informatika</a> <small>Administration</small> </h1>
@@ -58,21 +64,44 @@
           </ul>
         </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
+      
+      <p class="navbar-text navbar-right">Inloggad som <a href="#" class="navbar-link"><%=savedUserName%></a></p>
+      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">xxx</a></li>
-            <li><a href="#">xxx</a></li>
+            <li id="redigeraAnvandareKnapp"><a href="#">Redigera</a></li>
             <li><a href="#">xxx</a></li>
             <li class="divider"></li>
-            <li><a href="#">xxx</a></li>
+            <form action="logout" method="get">
+            <li><input type="submit" value="Logga ut" class="btn btn-danger btn-sm"></li>
+            </form>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+	<div id="redigeraAnvandare">
+		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
+		User name: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
+		<br>
+		First Name: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
+		<br>
+		Family Name: <input type = "text" name = "familyName" placeholder="<%=savedFamilyName%>..." />
+		<br>
+		Password: <input type = "password" name = "password" placeholder=""/>
+		<br>
+		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
+	</form>
+	</div>
+
+
+
 
 
 
@@ -94,26 +123,24 @@
 	<strong>Hämtat:</strong> <%=sdf.format(date) %> 
 	<br>
 	<br>
-	
-    <button type="button" class="btn btn-danger" id="avregistreraKnapp">Avregistrera</button>
+	<form>
+	<button type="button" class="btn btn-danger" id="avregistreraKnapp">Avregistrera</button>
 	<button type="button" class="btn btn-danger btn-lg" id="avregistreraKnapp2">
   	<span class="glyphicon glyphicon-remove"></span> Avregistrera
 	</button>
-	
-	<br>
-	<br>
-	<form>
+	<br><br>
 	<%
 	GetLiteratureService getLiteratureService = new GetLiteratureService();
 	ArrayList<String> list = getLiteratureService.getLiterature();
+	int lineCount = 0;
 	for(String book: list){
+		lineCount++;
 	%>
 	<!--
 
 	-->
   <ul class="list-group">
-
-	<li class="list-group-item list-group-item-info" id="bokListning"><input type="checkbox" class="taBortInput">Bok: <%=book %> </li>
+	<li class="list-group-item list-group-item-info" id="bokListning"><input type="checkbox" class="taBortInput"> Bok: <%=book %> </li>
 	<%} %>
 	</ul>
 	</form>
@@ -134,8 +161,22 @@
       </form>	
 </div>
 
+<div id="listaPagaendeLan">
+	<p> Kanske skulle vara coolt att använda olika färger beroende på hur långt lånet har pågått.</p>
+	<%
+	GetLoansService gls = new GetLoansService();
+	ArrayList<String> loanList = gls.getLoans();
+	for(String loan: loanList){
+	%>
+	 <ul class="list-group">
+	 <li class="list-group-item list-group-item-warning" id="lanListning">
+	<%=loan %></li>
+	<%}%>
+	</ul>
+	</div>
+	
 
-
+</div>
 
 
 

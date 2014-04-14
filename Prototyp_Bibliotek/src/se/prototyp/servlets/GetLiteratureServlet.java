@@ -28,7 +28,7 @@ public class GetLiteratureServlet extends HttpServlet {
 
 		
 	}
-
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String title = req.getParameter("soktTitel");

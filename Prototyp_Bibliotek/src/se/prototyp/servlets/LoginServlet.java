@@ -1,6 +1,7 @@
 package se.prototyp.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import se.prototyp.services.GetUserInfoService;
 import se.prototyp.services.LoginService;
 
 /**
@@ -18,6 +20,9 @@ import se.prototyp.services.LoginService;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -32,10 +37,22 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher;
 		
 		if(loginService.authenticate(userName, password)){
-			
+	
+			GetUserInfoService getUserInfoService = new GetUserInfoService();
+			ArrayList<String> userInfo = getUserInfoService.getUserInfo(userName, password);
 			HttpSession session = request.getSession();
+			
+			String firstName = userInfo.get(2);
+			String familyName = userInfo.get(3);
+			String id = userInfo.get(0);
+			
+			session.setAttribute("savedUserId", id);
 			session.setAttribute("savedUserName", userName);
-			dispatcher = request.getRequestDispatcher("loginsuccess.jsp");
+			session.setAttribute("savedFirstName", firstName);
+			session.setAttribute("savedFamilyName", familyName);
+			session.setAttribute("savedPassword", password);
+			
+			dispatcher = request.getRequestDispatcher("main.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

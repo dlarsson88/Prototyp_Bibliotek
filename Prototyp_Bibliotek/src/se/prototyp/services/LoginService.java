@@ -1,12 +1,10 @@
 package se.prototyp.services;
 import se.prototyp.database.DBOperations;
 
-public class LoginService {
+public class LoginService extends se.prototyp.database.DBConnection{
 
-	DBOperations dbo = new DBOperations();
-	
 	public boolean authenticate(String userName, String password){
-		if(dbo.checkUserExistance(userName, password)){
+		if(checkUserExistance(userName, password)){
 			return true;
 		}
 		else{

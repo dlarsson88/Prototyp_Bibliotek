@@ -113,7 +113,30 @@ public class DBOperations {
 		return amount;
 		
 	}
-
+	public ArrayList<String> getLoans(){
+		ArrayList<String> list = new ArrayList<String>();
+		String loanLine;
+		try{
+			//SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+			//FROM Orders
+			//INNER JOIN Customers
+			//ON Orders.CustomerID=Customers.CustomerID;
+			//preparedStatement = dbConnect.connection.prepareStatement("SELECT UserName FROM user_lantagare WHERE ID IN (SELECT User FROM loans)");
+			preparedStatement = dbConnect.connection.prepareStatement("SELECT user_lantagare.UserName, litterature.Titel FROM loans INNER JOIN user_lantagare ON user_lantagare.ID = loans.User INNER JOIN litterature ON litterature.ID = loans.Litterature");
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				loanLine = "";
+				loanLine = loanLine + "Låntagare: " + resultSet.getString(1);
+				loanLine = loanLine + "| Lånat verk: " + resultSet.getString(2);
+				list.add(loanLine);
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		
+		return list;
+	}
 
 	
 }
