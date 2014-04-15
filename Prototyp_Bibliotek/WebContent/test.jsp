@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="se.prototyp.database.DBOperations" import="java.util.ArrayList"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="se.prototyp.database.DBOperations" import="java.util.ArrayList"
     import="java.text.SimpleDateFormat" import="java.util.Date"
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +29,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 %>
 
-Hämtat: <%=sdf.format(date) %> 
+Hï¿½mtat: <%=sdf.format(date) %> 
 
 </body>
 </html>

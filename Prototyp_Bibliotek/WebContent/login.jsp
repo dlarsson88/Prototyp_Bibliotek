@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,29 +18,29 @@
 </button>
 </div>
 	<form action="login" method = "post">
-		Användarnamn: <input type = "text" name = "userNameLogin" autocomplete="off" />
+		AnvÃ¤ndarnamn:<br> <input type = "text" name = "userNameLogin" autocomplete="off" />
 		<br>
-		Lösenord: <input type = "password" name = "passwordLogin" autocomplete="off" />
-		<br>
+		LÃ¶senord:<br> <input type = "password" name = "passwordLogin" autocomplete="off" />
+		<br><br>
 		<input type = "submit" value="Logga in" class="btn btn-primary btn-sm"/>
 	</form>
 	<br>
 	
 	<button type="button" class="btn btn-success btn-default" id="register"><strong>+</strong>
-  <span class="glyphicon glyphicon-user"></span> Har du ingen användare?
+  <span class="glyphicon glyphicon-user"></span> Har du ingen anvÃ¤ndare?
 	</button>
 	<form id = "registerpanel" action="register" method = "post">
 		<div class="page-header">
   			<h1>Registrera <small></small></h1>
 		</div>
-		Användarnamn: <input type = "text" name = "userNameRegister" autocomplete="off" />
+		AnvÃ¤ndarnamn: <br><input type = "text" name = "userNameRegister" autocomplete="off" />
 		<br>
-		Förnamn: <input type = "text" name = "firstNameRegister" autocomplete="off" />
+		FÃ¤rnamn:<br> <input type = "text" name = "firstNameRegister" autocomplete="off" />
 		<br>
-		Efternamn: <input type = "text" name = "familyNameRegister" autocomplete="off" />
+		Efternamn:<br> <input type = "text" name = "familyNameRegister" autocomplete="off" />
 		<br>
-		Lösenord: <input type = "password" name = "passwordRegister" autocomplete="off" />
-		<br>
+		LÃ¶senord:<br> <input type = "password" name = "passwordRegister" autocomplete="off" />
+		<br><br>
 		<input type = "submit" value="Registrera" class="btn btn-primary btn-sm"/>
 	</form>
 </body>

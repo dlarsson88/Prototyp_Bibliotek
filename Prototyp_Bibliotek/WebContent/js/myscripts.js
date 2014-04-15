@@ -6,7 +6,7 @@
  */
 $(document).ready(function() {
 	
-	// Gömmer alla paneler i de dokument som importerat detta javascript-dokument öppnas.
+	// Gï¿½mmer alla paneler i de dokument som importerat detta javascript-dokument ï¿½ppnas.
 	$("#registerpanel").hide();
 	$("#katalogisera").hide();
 	$("#listaAllt").hide();
@@ -17,10 +17,10 @@ $(document).ready(function() {
 	$("#redigeraAnvandare").hide();
 	
 	
-	// När registerknappen klickats på kör vi denna funktion..
+	// Nï¿½r registerknappen klickats pï¿½ kï¿½r vi denna funktion..
 	// Denna knapp har getts id="register" i dokumentet login.jsp.
-	// Vi når detta id genom att ange den som #register.
-	// Denna del kallas för selectorn. ---> http://api.jquery.com/id-selector/
+	// Vi nï¿½r detta id genom att ange den som #register.
+	// Denna del kallas fï¿½r selectorn. ---> http://api.jquery.com/id-selector/
 	$("#register").click(function(){
 		
 		// Registerpanelen slidar in (eller ut) med en snabbhet av "250".
@@ -30,18 +30,20 @@ $(document).ready(function() {
 	});
 	// Funktion slut
 	
-	// Ny funktion... samma mönster gäller.
+	// Ny funktion... samma mï¿½nster gï¿½ller.
 	$("#katalogiseraKnapp").click(function(){
 		
+		
 		$("#katalogisera").fadeToggle(500);
-		// Observera att vi gömmer alla paneler som inte är "katalogiserapanelen". Vi vill endast att katalogiserapanelen ska synas.
-		// Observera också att det säkert kan göras 100 gånger bättre om man förstår vad man håller på med.
-		// Detta är självklart inte ett bra sätt att göra saker på men det fungerar.. for now.
+		// Observera att vi gï¿½mmer alla paneler som inte ï¿½r "katalogiserapanelen". Vi vill endast att katalogiserapanelen ska synas.
+		// Observera ocksï¿½ att det sï¿½kert kan gï¿½ras 100 gï¿½nger bï¿½ttre om man fï¿½rstï¿½r vad man hï¿½ller pï¿½ med.
+		// Detta ï¿½r sjï¿½lvklart inte ett bra sï¿½tt att gï¿½ra saker pï¿½ men det fungerar.. for now.
 		$("#listaAllt").hide();
 		$("#listaEnskildTitel").hide();
 		$("#searchedTitle").hide();
 		$("#listaPagaendeLan").hide();
 		$("#redigeraAnvandare").hide();
+
 	});
 	
 	$("#listaAlltKnapp").click(function(){
@@ -84,7 +86,11 @@ $(document).ready(function() {
 		$("#avregistreraKnapp2").slideToggle();
 
 	});
+	
+	$('#katalogisera').validator('validate');
 
 	
 
 });
+
+

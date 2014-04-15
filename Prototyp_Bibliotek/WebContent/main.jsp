@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"
     import="java.util.Collections" import="se.prototyp.services.GetLoansService"%>
@@ -61,7 +61,7 @@ if (session.getAttribute("savedUserName") == null) {
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lista <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li id="listaAlltKnapp"><a href="#">Samtliga verk<span class="badge">
+            <li id="listaAlltKnapp"><a href="#">Samtliga verk&nbsp&nbsp<span class="badge">
             <%
             GetLiteratureService gts = new GetLiteratureService();
   			int amount = gts.getNumberOfTitles()+1;
@@ -69,7 +69,7 @@ if (session.getAttribute("savedUserName") == null) {
             <%=amount %>
             </span></a></li>
             <li id="listaEnskildTitelKnapp"><a href="#">Enskilt verk</a></li>
-            <li id="pagaendeLanKnapp"><a href="#">Pågående lån</a></li>
+            <li id="pagaendeLanKnapp"><a href="#">PÃ¥gÃ¥ende lÃ¥n</a></li>
           </ul>
         </li>
       </ul>
@@ -97,15 +97,15 @@ if (session.getAttribute("savedUserName") == null) {
 
 	<div id="redigeraAnvandare">
 		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
-		Användarnamn: <input type = "text" name = "userNameEdit" autocomplete="off" placeholder="<%=savedUserName%>..."/>
+		AnvÃ¤ndarnamn: <input type = "text" name = "userNameEdit" autocomplete="off" placeholder="<%=savedUserName%>..."/>
 		<br>
-		Förnamn: <input type = "text" name = "firstNameEdit" autocomplete="off" placeholder="<%=savedFirstName%>..."/>
+		FÃ¶rnamn: <input type = "text" name = "firstNameEdit" autocomplete="off" placeholder="<%=savedFirstName%>..."/>
 		<br>
 		Efternamn: <input type = "text" name = "familyNameEdit" autocomplete="off" placeholder="<%=savedFamilyName%>..." />
 		<br>
-		Lösenord: <input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
+		LÃ¶senord: <input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
 		<br>
-		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
+		<input type = "submit" class="btn btn-primary btn-sm" value="ï¿½ndra"/>
 	</form>
 	</div>
 
@@ -113,7 +113,7 @@ if (session.getAttribute("savedUserName") == null) {
 	<form id = "katalogisera" action="catalog" method = "post" class="navbar-form navbar-left">
 		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..."/>
 		<br><br>
-		<input type = "submit" value="Lägg till" class="btn btn-primary"/>
+		<input type = "submit" value="LÃ¤gg till" class="btn btn-primary"/>
 	</form>
 
 
@@ -124,7 +124,7 @@ if (session.getAttribute("savedUserName") == null) {
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	%>
-	<strong>Hämtat:</strong> <%=sdf.format(date) %> 
+	<strong>HÃ¤mtat:</strong> <%=sdf.format(date) %> 
 	<br>
 	<br>
 	<form>
@@ -157,16 +157,16 @@ if (session.getAttribute("savedUserName") == null) {
 	</div>
 </div>
 <div id="listaEnskildTitel">
-      <form class="navbar-form navbar-left" role="Sök" action="getLiterature" method="post" >
+      <form class="navbar-form navbar-left" role="Sï¿½k" action="getLiterature" method="post" >
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Titel..." name="soktTitel">
         </div>
-        <button type="submit" class="btn btn-default" id="search">Sök</button>
+        <button type="submit" class="btn btn-default" id="search">Sï¿½k</button>
       </form>	
 </div>
 
 <div id="listaPagaendeLan">
-	<p> Kanske skulle vara coolt att använda olika färger beroende på hur långt lånet har pågått.</p>
+	<p> Kanske skulle vara coolt att anvÃ¤nda olika fÃ¤rger beroende pÃ¥ hur lÃ¥ngt lÃ¥net har pÃ¥gÃ¥tt.</p>
 	<%
 	GetLoansService gls = new GetLoansService();
 	ArrayList<String> loanList = gls.getLoans();

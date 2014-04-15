@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"
     import="java.util.Collections" import="se.prototyp.services.GetLoansService"%>
@@ -60,7 +60,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
             <%=amount %>
             </span></a></li>
             <li id="listaEnskildTitelKnapp"><a href="#">Enskilt verk</a></li>
-            <li id="pagaendeLanKnapp"><a href="#">Pågående lån</a></li>
+            <li id="pagaendeLanKnapp"><a href="#">Pï¿½gï¿½ende lï¿½n</a></li>
           </ul>
         </li>
       </ul>
@@ -88,15 +88,15 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 
 	<div id="redigeraAnvandare">
 		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
-		Användarnamn: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
+		Anvï¿½ndarnamn: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
 		<br>
-		Förnamn: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
+		Fï¿½rnamn: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
 		<br>
 		Efternamn: <input type = "text" name = "familyName" placeholder="<%=savedFamilyName%>..." />
 		<br>
-		Lösenord: <input type = "password" name = "password" placeholder=""/>
+		Lï¿½senord: <input type = "password" name = "password" placeholder=""/>
 		<br>
-		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
+		<input type = "submit" class="btn btn-primary btn-sm" value="ï¿½ndra"/>
 	</form>
 	</div>
 
@@ -109,7 +109,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	<form id = "katalogisera" action="catalog" method = "post" class="navbar-form navbar-left">
 		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..."/>
 		<br><br>
-		<input type = "submit" value="Lägg till" class="btn btn-primary"/>
+		<input type = "submit" value="Lï¿½gg till" class="btn btn-primary"/>
 	</form>
 
 
@@ -120,7 +120,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	%>
-	<strong>Hämtat:</strong> <%=sdf.format(date) %> 
+	<strong>Hï¿½mtat:</strong> <%=sdf.format(date) %> 
 	<br>
 	<br>
 	<form>
@@ -153,16 +153,16 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	</div>
 </div>
 <div id="listaEnskildTitel">
-      <form class="navbar-form navbar-left" role="Sök" action="getLiterature" method="post" >
+      <form class="navbar-form navbar-left" role="Sï¿½k" action="getLiterature" method="post" >
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Titel..." name="soktTitel">
         </div>
-        <button type="submit" class="btn btn-default" id="search">Sök</button>
+        <button type="submit" class="btn btn-default" id="search">Sï¿½k</button>
       </form>	
 </div>
 
 <div id="listaPagaendeLan">
-	<p> Kanske skulle vara coolt att använda olika färger beroende på hur långt lånet har pågått.</p>
+	<p> Kanske skulle vara coolt att anvï¿½nda olika fï¿½rger beroende pï¿½ hur lï¿½ngt lï¿½net har pï¿½gï¿½tt.</p>
 	<%
 	GetLoansService gls = new GetLoansService();
 	ArrayList<String> loanList = gls.getLoans();

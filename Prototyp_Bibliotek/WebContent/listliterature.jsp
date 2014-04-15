@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"%>
     
@@ -83,7 +83,7 @@
 		</div>
 		Titel: <input type = "text" name = "title" />
 		<br>
-		<input type = "submit" value="Lägg in"/>
+		<input type = "submit" value="Lï¿½gg in"/>
 	</form>
 
 <div id="listTitlesFromDB">
@@ -93,7 +93,7 @@
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	%>
-	<strong>Hämtat:</strong> <%=sdf.format(date) %> 
+	<strong>Hï¿½mtat:</strong> <%=sdf.format(date) %> 
 	<br>
 	<%
 	GetLiteratureService getLiteratureService = new GetLiteratureService();

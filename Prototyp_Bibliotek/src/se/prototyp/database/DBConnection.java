@@ -24,7 +24,7 @@ public class DBConnection {
 	try {
 //		localConn = DriverManager.getConnection("jdbc:mysql://46.239.118.12:3306/prototyp_bibliotek","frud", "ultrajacka112");
 	    localConn = DriverManager.getConnection("jdbc:mysql://192.168.1.15:3306/prototyp_bibliotek","frud", "ultrajacka112");
-//	    localConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/prototyp_bibliotek","root", "chocs");
+//		localConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/prototyp_bibliotek","root", "chocs");
 //	    localConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prototyp_bibliotek","root", "");
 	    
 	} catch (SQLException se) {
