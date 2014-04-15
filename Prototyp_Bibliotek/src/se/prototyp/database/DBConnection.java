@@ -163,7 +163,7 @@ public class DBConnection {
 			while(resultSet.next()){
 				loanLine = "";
 				loanLine = loanLine + "Låntagare: " + resultSet.getString(1);
-				loanLine = loanLine + "| Lånat verk: " + resultSet.getString(2);
+				loanLine = loanLine + "| Låånat verk: " + resultSet.getString(2);
 				list.add(loanLine);
 			}
 		}
