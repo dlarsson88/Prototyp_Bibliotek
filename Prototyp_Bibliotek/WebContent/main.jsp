@@ -14,7 +14,7 @@
     <script src="js/bootstrap.min.js"></script>	
     <script src="js/myscripts.js"></script>
 	<meta http-equiv="Content-Type" name="viewport" content="width=device-width">
-	<title>Bibliotek Informatika</title>
+	<title>Bibliotek Informatika - Administration</title>
 
 	<link rel="shortcut icon" href="http://www.odontologi.gu.se/kirurgi/img/gu_logga.png">
 </head>

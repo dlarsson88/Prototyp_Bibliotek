@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" name="viewport" content="width=device-width">
-<title>Login Page</title>
+<title>Bibliotek Informatika - Inloggning</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/mystyles.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
