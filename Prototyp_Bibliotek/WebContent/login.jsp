@@ -18,9 +18,9 @@
 </button>
 </div>
 	<form action="login" method = "post">
-		Användarnamn: <input type = "text" name = "userName" />
+		Användarnamn: <input type = "text" name = "userNameLogin" />
 		<br>
-		Lösenord: <input type = "password" name = "password" />
+		Lösenord: <input type = "password" name = "passwordLogin" />
 		<br>
 		<input type = "submit" value="Logga in" class="btn btn-primary btn-sm"/>
 	</form>
@@ -33,13 +33,13 @@
 		<div class="page-header">
   			<h1>Registrera <small></small></h1>
 		</div>
-		Användarnamn: <input type = "text" name = "userName" />
+		Användarnamn: <input type = "text" name = "userNameRegister" />
 		<br>
-		Förnamn: <input type = "text" name = "firstName" />
+		Förnamn: <input type = "text" name = "firstNameRegister" />
 		<br>
-		Efternamn: <input type = "text" name = "familyName" />
+		Efternamn: <input type = "text" name = "familyNameRegister" />
 		<br>
-		Lösenord: <input type = "password" name = "password" />
+		Lösenord: <input type = "password" name = "passwordRegister" />
 		<br>
 		<input type = "submit" value="Registrera" class="btn btn-primary btn-sm"/>
 	</form>

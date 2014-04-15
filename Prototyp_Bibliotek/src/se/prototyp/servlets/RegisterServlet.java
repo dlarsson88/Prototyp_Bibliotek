@@ -24,10 +24,10 @@ public class RegisterServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName, firstName, familyName, password;
-		userName = request.getParameter("userName");
-		firstName = request.getParameter("firstName");
-		familyName = request.getParameter("familyName");
-		password = request.getParameter("password");
+		userName = request.getParameter("userNameRegister");
+		firstName = request.getParameter("firstNameRegister");
+		familyName = request.getParameter("familyNameRegister");
+		password = request.getParameter("passwordRegister");
 		RegisterService registerService = new RegisterService();
 		RequestDispatcher dispatcher;
 		

@@ -21,10 +21,10 @@ public class EditUserServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		String StringId = (String) session.getAttribute("savedUserId");
 		int id = Integer.parseInt(StringId);
-		String userName = (String) req.getParameter("userName");
-		String firstName = (String) req.getParameter("firstName");
-		String familyName = (String) req.getParameter("familyName");
-		String password = (String) req.getParameter("password");
+		String userName = (String) req.getParameter("userNameEdit");
+		String firstName = (String) req.getParameter("firstNameEdit");
+		String familyName = (String) req.getParameter("familyNameEdit");
+		String password = (String) req.getParameter("passwordEdit");
 		
 		EditUserService editUserService = new EditUserService();
 		RequestDispatcher dispatcher;
