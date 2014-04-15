@@ -88,13 +88,13 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 
 	<div id="redigeraAnvandare">
 		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
-		User name: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
+		Användarnamn: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
 		<br>
-		First Name: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
+		Förnamn: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
 		<br>
-		Family Name: <input type = "text" name = "familyName" placeholder="<%=savedFamilyName%>..." />
+		Efternamn: <input type = "text" name = "familyName" placeholder="<%=savedFamilyName%>..." />
 		<br>
-		Password: <input type = "password" name = "password" placeholder=""/>
+		Lösenord: <input type = "password" name = "password" placeholder=""/>
 		<br>
 		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
 	</form>
@@ -184,3 +184,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 
 </body>
 </html>
+
+
+
+

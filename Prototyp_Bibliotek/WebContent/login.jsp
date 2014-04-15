@@ -14,13 +14,13 @@
 </head>
 <body>
 <div class="page-header">
-<h1>  <a href="main.jsp"> <span class="glyphicon glyphicon-book"></span> Bibliotek Informatika</a> <small>Inloggning</small> </h1>
+<h1>  <a href="login.jsp"> <span class="glyphicon glyphicon-book"></span> Bibliotek Informatika</a> <small>Inloggning</small> </h1>
 </button>
 </div>
 	<form action="login" method = "post">
-		User Name: <input type = "text" name = "userName" />
+		Användarnamn: <input type = "text" name = "userName" />
 		<br>
-		Password: <input type = "password" name = "password" />
+		Lösenord: <input type = "password" name = "password" />
 		<br>
 		<input type = "submit" value="Logga in" class="btn btn-primary btn-sm"/>
 	</form>
@@ -33,13 +33,13 @@
 		<div class="page-header">
   			<h1>Registrera <small></small></h1>
 		</div>
-		User name: <input type = "text" name = "userName" />
+		Användarnamn: <input type = "text" name = "userName" />
 		<br>
-		First Name: <input type = "text" name = "firstName" />
+		Förnamn: <input type = "text" name = "firstName" />
 		<br>
-		Family Name: <input type = "text" name = "familyName" />
+		Efternamn: <input type = "text" name = "familyName" />
 		<br>
-		Password: <input type = "password" name = "password" />
+		Lösenord: <input type = "password" name = "password" />
 		<br>
 		<input type = "submit" value="Registrera" class="btn btn-primary btn-sm"/>
 	</form>

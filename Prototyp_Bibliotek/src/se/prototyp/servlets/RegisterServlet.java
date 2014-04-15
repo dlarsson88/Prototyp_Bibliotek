@@ -34,7 +34,7 @@ public class RegisterServlet extends HttpServlet {
 		if(userName != "" && firstName != "" && familyName != "" && password != ""){
 			boolean result = registerService.addUser(userName, firstName, familyName, password);
 			if(result){
-				dispatcher = request.getRequestDispatcher("registersuccess.jsp");
+				dispatcher = request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
