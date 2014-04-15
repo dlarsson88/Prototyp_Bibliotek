@@ -20,11 +20,20 @@
 </head>
 <body>
 
+
+
+
 <%
 String savedUserName = (String) session.getAttribute("savedUserName");
 String savedFirstName = (String) session.getAttribute("savedFirstName");
 String savedFamilyName = (String) session.getAttribute("savedFamilyName");
 String savedPassword = (String) session.getAttribute("savedPassword");
+%>
+
+<% 
+if (session.getAttribute("savedUserName") == null) {
+    response.sendRedirect("login.jsp"); // Not logged in, redirect to login page.
+}
 %>
 
 <div class="page-header">
