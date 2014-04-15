@@ -101,11 +101,6 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	</div>
 
 
-
-
-
-
-
 	<form id = "katalogisera" action="catalog" method = "post" class="navbar-form navbar-left">
 		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..."/>
 		<br><br>
