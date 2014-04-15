@@ -87,10 +87,6 @@ $(document).ready(function() {
 
 	});
 	
-	$('#katalogisera').validator('validate');
-
-	
-
 });
 
 
