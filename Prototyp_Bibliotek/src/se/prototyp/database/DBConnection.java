@@ -162,8 +162,8 @@ public class DBConnection {
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				loanLine = "";
-				loanLine = loanLine + "Låntagare: " + resultSet.getString(1);
-				loanLine = loanLine + "| Lånat verk: " + resultSet.getString(2);
+				loanLine = loanLine + "LÃ¥ntagare: " + resultSet.getString(1);
+				loanLine = loanLine + "| LÃ¥nat verk: " + resultSet.getString(2);
 				list.add(loanLine);
 			}
 		}
