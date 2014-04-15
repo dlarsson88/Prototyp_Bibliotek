@@ -216,4 +216,34 @@ public class DBConnection {
 		return edited;
 
 	}
+	public boolean checkIfPasswordExistsDB(String password){
+		boolean exists = false;
+		try{
+			preparedStatement = connection.prepareStatement("SELECT * from user WHERE Password = ?");
+			preparedStatement.setString(1, password);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()){
+				exists = true;
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return exists;
+	}
+	public boolean checkIfUserNameExistsDB(String userName){
+		boolean exists = false;
+		try{
+			preparedStatement = connection.prepareStatement("SELECT * from user WHERE UserName = ?");
+			preparedStatement.setString(1, userName);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()){
+				exists = true;
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return exists;
+	}
 }

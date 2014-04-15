@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import se.prototyp.database.DBOperations;
+import se.prototyp.services.DBConsistencyService;
 import se.prototyp.services.EditUserService;
 
 @WebServlet("/editUser")
@@ -29,7 +31,20 @@ public class EditUserServlet extends HttpServlet {
 		EditUserService editUserService = new EditUserService();
 		RequestDispatcher dispatcher;
 
+		DBConsistencyService consistency = new DBConsistencyService();
+		
+		// Vi tittar om ifyllt lösenord eller användarnamn redan finns i databasen.
+		if(consistency.checkIfUserNameExists(userName)){
+			dispatcher = req.getRequestDispatcher("main.jsp");
+			req.setAttribute("svar", "Detta användarnamn finns redan i databasen. Välj ett annat.");
+			dispatcher.forward(req, resp);
+			return;
+		}
+		
+		// Vi försöker uppdatera databasen med de nya användaruppgifterna.
 		if(editUserService.editUser(id, userName, firstName, familyName, password)){
+			// Uppdateringen lyckades.
+			// Vi läser in de nya uppgifterna i sessionen (inloggningen).
 			session.setAttribute("savedUserName", userName);
 			session.setAttribute("savedFirstName", firstName);
 			session.setAttribute("savedFamilyName", familyName);
@@ -39,6 +54,7 @@ public class EditUserServlet extends HttpServlet {
 			return;
 		}
 		else{
+			// Uppdateringen lyckades inte.
 			dispatcher = req.getRequestDispatcher("main.jsp");
 			dispatcher.forward(req, resp);
 			return;

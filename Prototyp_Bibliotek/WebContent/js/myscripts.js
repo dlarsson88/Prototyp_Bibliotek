@@ -86,7 +86,9 @@ $(document).ready(function() {
 		$("#avregistreraKnapp2").slideToggle();
 
 	});
-	
+	$("li[name^='bokListning']").click(function(){
+		$(this).toggleClass(".list-group-item list-group-item-danger");
+	});
 });
 
 

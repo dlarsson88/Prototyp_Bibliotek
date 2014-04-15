@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"
@@ -97,15 +97,15 @@ if (session.getAttribute("savedUserName") == null) {
 
 	<div id="redigeraAnvandare">
 		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
-		Användarnamn: <input type = "text" name = "userNameEdit" autocomplete="off" placeholder="<%=savedUserName%>..."/>
+		Användarnamn: <br><input type = "text" name = "userNameEdit" autocomplete="off" placeholder="<%=savedUserName%>..."/>
 		<br>
-		Förnamn: <input type = "text" name = "firstNameEdit" autocomplete="off" placeholder="<%=savedFirstName%>..."/>
+		Förnamn: <br><input type = "text" name = "firstNameEdit" autocomplete="off" placeholder="<%=savedFirstName%>..."/>
 		<br>
-		Efternamn: <input type = "text" name = "familyNameEdit" autocomplete="off" placeholder="<%=savedFamilyName%>..." />
+		Efternamn: <br><input type = "text" name = "familyNameEdit" autocomplete="off" placeholder="<%=savedFamilyName%>..." />
 		<br>
-		Lösenord: <input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
-		<br>
-		<input type = "submit" class="btn btn-primary btn-sm" value="�ndra"/>
+		Lösenord: <br><input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
+		<br><br>
+		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
 	</form>
 	</div>
 
@@ -144,29 +144,24 @@ if (session.getAttribute("savedUserName") == null) {
 
 	-->
   <ul class="list-group">
-	<li class="list-group-item list-group-item-info" id="bokListning"><input type="checkbox" class="taBortInput"> Bok: <%=book %> </li>
+	<li class="list-group-item list-group-item-info" name="bokListning<%=lineCount%>"><input type="checkbox" class="taBortInput"> Bok: <%=book %> </li>
 	<%} %>
 	</ul>
 	</form>
-	<%
-
-	
-	%>
-	
 
 	</div>
 </div>
 <div id="listaEnskildTitel">
-      <form class="navbar-form navbar-left" role="S�k" action="getLiterature" method="post" >
+      <form class="navbar-form navbar-left" role="Sök" action="getLiterature" method="post" >
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Titel..." name="soktTitel">
         </div>
-        <button type="submit" class="btn btn-default" id="search">S�k</button>
+        <button type="submit" class="btn btn-default" id="search">Sök</button>
       </form>	
 </div>
 
 <div id="listaPagaendeLan">
-	<p> Kanske skulle vara coolt att använda olika färger beroende på hur långt lånet har pågått.</p>
+	<p> Kanske skulle vara coolt att använda olika färger beroende på hur länge lånet har pågått.</p>
 	<%
 	GetLoansService gls = new GetLoansService();
 	ArrayList<String> loanList = gls.getLoans();
@@ -184,6 +179,21 @@ if (session.getAttribute("savedUserName") == null) {
 
 
 
+	<!-- Svar ifrån backend. ------------------------------------------ -->
+	
+	<% 
+	if(request.getAttribute("svar") != null){
+		String svar = (String) request.getAttribute("svar");
+		%>
+		<script>
+		setTimeout(svaret, 20);
+		function svaret(){
+			alert("<%=svar%>");
+		}
+		</script>
+	<% 
+	}
+	%>
 
 
 </body>

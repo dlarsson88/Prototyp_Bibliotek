@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,8 @@
 <h1>  <a href="login.jsp"> <span class="glyphicon glyphicon-book"></span> Bibliotek Informatika</a> <small>Inloggning</small> </h1>
 </button>
 </div>
-	<form action="login" method = "post">
+
+	<form action="login" method = "post" >
 		Användarnamn:<br> <input type = "text" name = "userNameLogin" autocomplete="off" />
 		<br>
 		Lösenord:<br> <input type = "password" name = "passwordLogin" autocomplete="off" />
@@ -35,7 +36,7 @@
 		</div>
 		Användarnamn: <br><input type = "text" name = "userNameRegister" autocomplete="off" />
 		<br>
-		Färnamn:<br> <input type = "text" name = "firstNameRegister" autocomplete="off" />
+		Förnamn:<br> <input type = "text" name = "firstNameRegister" autocomplete="off" />
 		<br>
 		Efternamn:<br> <input type = "text" name = "familyNameRegister" autocomplete="off" />
 		<br>
@@ -43,5 +44,25 @@
 		<br><br>
 		<input type = "submit" value="Registrera" class="btn btn-primary btn-sm"/>
 	</form>
+	
+	<!-- Svar ifrån backend.------------------------------------------------- -->
+	
+	<% 
+	if(request.getAttribute("svar") != null){
+		String svar = (String) request.getAttribute("svar");
+		%>
+		<script>
+		setTimeout(svaret, 20);
+		function svaret(){
+			alert("<%=svar%>");
+		}
+		</script>
+	<% 
+	}
+	%>
+	
+	
+	
+	
 </body>
 </html>

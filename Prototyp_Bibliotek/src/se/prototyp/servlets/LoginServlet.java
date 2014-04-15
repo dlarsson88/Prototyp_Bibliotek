@@ -58,6 +58,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else{
 			dispatcher = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("svar", "Fel användarnamn eller lösenord!");
 			dispatcher.forward(request, response);
 		}
 		
