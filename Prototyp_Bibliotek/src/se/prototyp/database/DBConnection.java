@@ -162,7 +162,7 @@ public class DBConnection {
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				loanLine = "";
-				loanLine = loanLine + "Låntagare: " + resultSet.getString(1);
+				loanLine = loanLine + "Lååntagare: " + resultSet.getString(1);
 				loanLine = loanLine + "| Låånat verk: " + resultSet.getString(2);
 				list.add(loanLine);
 			}
