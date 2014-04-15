@@ -23,8 +23,10 @@ public class DBConnection {
   
 	try {
 //		localConn = DriverManager.getConnection("jdbc:mysql://46.239.118.12:3306/prototyp_bibliotek","frud", "ultrajacka112");
-	    localConn = DriverManager.getConnection("jdbc:mysql://192.168.1.15:3306/prototyp_bibliotek","frud", "ultrajacka112");
+//	    localConn = DriverManager.getConnection("jdbc:mysql://192.168.1.15:3306/prototyp_bibliotek","frud", "ultrajacka112");
+	    localConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/prototyp_bibliotek","root", "chocs");
 //	    localConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prototyp_bibliotek","root", "");
+	    
 	} catch (SQLException se) {
 	    System.out.println("Couldn't connect: print out a stack trace and exit.");
 	    se.printStackTrace();
@@ -160,8 +162,8 @@ public class DBConnection {
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				loanLine = "";
-				loanLine = loanLine + "Låntagare: " + resultSet.getString(1);
-				loanLine = loanLine + "| Lånat verk: " + resultSet.getString(2);
+				loanLine = loanLine + "Lï¿½ntagare: " + resultSet.getString(1);
+				loanLine = loanLine + "| Lï¿½nat verk: " + resultSet.getString(2);
 				list.add(loanLine);
 			}
 		}
