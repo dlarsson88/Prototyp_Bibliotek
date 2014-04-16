@@ -105,7 +105,7 @@ if (session.getAttribute("savedUserName") == null) {
 		<br>
 		Lösenord: <br><input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
 		<br><br>
-		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
+		<input type = "submit" class="btn btn-primary btn-sm" value="Uppdatera"/>
 	</form>
 	</div>
 
@@ -198,6 +198,7 @@ if (session.getAttribute("savedUserName") == null) {
 
 </body>
 </html>
+
 
 
 

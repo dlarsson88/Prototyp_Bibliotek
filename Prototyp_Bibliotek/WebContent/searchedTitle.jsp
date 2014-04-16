@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"
     import="java.util.ArrayList" import="se.prototyp.services.GetLiteratureService"
     import="java.text.SimpleDateFormat" import="java.util.Date"
@@ -14,17 +14,26 @@
     <script src="js/bootstrap.min.js"></script>	
     <script src="js/myscripts.js"></script>
 	<meta http-equiv="Content-Type" name="viewport" content="width=device-width">
-	<title>Bibliotek Informatika</title>
+	<title>Bibliotek Informatika - Administration</title>
 
 	<link rel="shortcut icon" href="http://www.odontologi.gu.se/kirurgi/img/gu_logga.png">
 </head>
 <body>
+
+
+
 
 <%
 String savedUserName = (String) session.getAttribute("savedUserName");
 String savedFirstName = (String) session.getAttribute("savedFirstName");
 String savedFamilyName = (String) session.getAttribute("savedFamilyName");
 String savedPassword = (String) session.getAttribute("savedPassword");
+%>
+
+<% 
+if (session.getAttribute("savedUserName") == null) {
+    response.sendRedirect("login.jsp"); // Not logged in, redirect to login page.
+}
 %>
 
 <div class="page-header">
@@ -52,7 +61,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lista <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li id="listaAlltKnapp"><a href="#">Samtliga verk<span class="badge">
+            <li id="listaAlltKnapp"><a href="#">Samtliga verk&nbsp&nbsp<span class="badge">
             <%
             GetLiteratureService gts = new GetLiteratureService();
   			int amount = gts.getNumberOfTitles()+1;
@@ -60,7 +69,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
             <%=amount %>
             </span></a></li>
             <li id="listaEnskildTitelKnapp"><a href="#">Enskilt verk</a></li>
-            <li id="pagaendeLanKnapp"><a href="#">P�g�ende l�n</a></li>
+            <li id="pagaendeLanKnapp"><a href="#">Pågående lån</a></li>
           </ul>
         </li>
       </ul>
@@ -88,28 +97,23 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 
 	<div id="redigeraAnvandare">
 		<form id = "redigera" action="editUser" method = "post" class="navbar-form navbar-left">
-		Anv�ndarnamn: <input type = "text" name = "userName" placeholder="<%=savedUserName%>..."/>
+		Användarnamn: <br><input type = "text" name = "userNameEdit" autocomplete="off" placeholder="<%=savedUserName%>..."/>
 		<br>
-		F�rnamn: <input type = "text" name = "firstName" placeholder="<%=savedFirstName%>..."/>
+		Förnamn: <br><input type = "text" name = "firstNameEdit" autocomplete="off" placeholder="<%=savedFirstName%>..."/>
 		<br>
-		Efternamn: <input type = "text" name = "familyName" placeholder="<%=savedFamilyName%>..." />
+		Efternamn: <br><input type = "text" name = "familyNameEdit" autocomplete="off" placeholder="<%=savedFamilyName%>..." />
 		<br>
-		L�senord: <input type = "password" name = "password" placeholder=""/>
-		<br>
-		<input type = "submit" class="btn btn-primary btn-sm" value="�ndra"/>
+		Lösenord: <br><input type = "password" name = "passwordEdit" autocomplete="off" placeholder=""/>
+		<br><br>
+		<input type = "submit" class="btn btn-primary btn-sm" value="Ändra"/>
 	</form>
 	</div>
-
-
-
-
-
 
 
 	<form id = "katalogisera" action="catalog" method = "post" class="navbar-form navbar-left">
 		Titel: <input type = "text" name = "title" class="form-control" placeholder="Titel..."/>
 		<br><br>
-		<input type = "submit" value="L�gg till" class="btn btn-primary"/>
+		<input type = "submit" value="Lägg till" class="btn btn-primary"/>
 	</form>
 
 
@@ -120,7 +124,7 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	%>
-	<strong>H�mtat:</strong> <%=sdf.format(date) %> 
+	<strong>Hämtat:</strong> <%=sdf.format(date) %> 
 	<br>
 	<br>
 	<form>
@@ -140,29 +144,24 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 
 	-->
   <ul class="list-group">
-	<li class="list-group-item list-group-item-info" id="bokListning"><input type="checkbox" class="taBortInput"> Bok: <%=book %> </li>
+	<li class="list-group-item list-group-item-info" name="bokListning<%=lineCount%>"><input type="checkbox" class="taBortInput"> Bok: <%=book %> </li>
 	<%} %>
 	</ul>
 	</form>
-	<%
-
-	
-	%>
-	
 
 	</div>
 </div>
 <div id="listaEnskildTitel">
-      <form class="navbar-form navbar-left" role="S�k" action="getLiterature" method="post" >
+      <form class="navbar-form navbar-left" role="Sök" action="getLiterature" method="post" >
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Titel..." name="soktTitel">
         </div>
-        <button type="submit" class="btn btn-default" id="search">S�k</button>
+        <button type="submit" class="btn btn-default" id="search">Sök</button>
       </form>	
 </div>
 
 <div id="listaPagaendeLan">
-	<p> Kanske skulle vara coolt att anv�nda olika f�rger beroende p� hur l�ngt l�net har p�g�tt.</p>
+	<p> Kanske skulle vara coolt att använda olika färger beroende på hur länge lånet har pågått.</p>
 	<%
 	GetLoansService gls = new GetLoansService();
 	ArrayList<String> loanList = gls.getLoans();
@@ -189,6 +188,21 @@ String savedPassword = (String) session.getAttribute("savedPassword");
 	<%} %>
 </div>
 
+	<!-- Svar ifrån backend. ------------------------------------------ -->
+	
+	<% 
+	if(request.getAttribute("svar") != null){
+		String svar = (String) request.getAttribute("svar");
+		%>
+		<script>
+		setTimeout(svaret, 20);
+		function svaret(){
+			alert("<%=svar%>");
+		}
+		</script>
+	<% 
+	}
+	%>
 
 
 </body>

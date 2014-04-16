@@ -60,6 +60,7 @@ public class RegisterServlet extends HttpServlet {
 						session.setAttribute("savedPassword", password);
 						
 						// Användaren skickas till main.jsp som inloggad.
+						request.setAttribute("svar", "Välkommen " + userName + "! Du är nu registrerad på Bibliotek Informatika.");
 						dispatcher = request.getRequestDispatcher("main.jsp");
 						dispatcher.forward(request, response);
 						return;

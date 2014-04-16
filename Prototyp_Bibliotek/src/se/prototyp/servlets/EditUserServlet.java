@@ -49,12 +49,16 @@ public class EditUserServlet extends HttpServlet {
 			session.setAttribute("savedFirstName", firstName);
 			session.setAttribute("savedFamilyName", familyName);
 			session.setAttribute("savedPassword", password);
+			String newUserName = (String) session.getAttribute("savedUserName");
+			req.setAttribute("svar", "Gratulerar " + newUserName + "! Dina användaruppgifter är nu uppdaterade.");
 			dispatcher = req.getRequestDispatcher("main.jsp");
 			dispatcher.forward(req, resp);
 			return;
 		}
 		else{
 			// Uppdateringen lyckades inte.
+			String newUserName = (String) session.getAttribute("savedUserName");
+			req.setAttribute("svar", "Tyvärr " + newUserName + "! Dina användaruppgifter kunde inte uppdateras.");
 			dispatcher = req.getRequestDispatcher("main.jsp");
 			dispatcher.forward(req, resp);
 			return;
