@@ -1,3 +1,5 @@
+/* En klass för att kolla om viss data existerar i databasen */
+
 package se.prototyp.services;
 
 public class DBConsistencyService extends se.prototyp.database.DBConnection{
@@ -8,4 +10,8 @@ public class DBConsistencyService extends se.prototyp.database.DBConnection{
 	public boolean checkIfUserNameExists(String userName){
 		return checkIfUserNameExistsDB(userName);
 	}
+	public boolean checkIfLiteratureExists(String title){
+		return checkIfLiteratureExistsDB(title);
+	}
+	
 }

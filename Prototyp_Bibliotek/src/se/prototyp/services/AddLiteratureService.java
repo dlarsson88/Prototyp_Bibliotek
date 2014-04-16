@@ -1,3 +1,5 @@
+/* En klass för att lägga till ny litteratur i databasen */
+
 package se.prototyp.services;
 
 import se.prototyp.database.DBOperations;

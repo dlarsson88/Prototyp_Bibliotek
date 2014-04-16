@@ -23,9 +23,9 @@ public class DBConnection {
   
 	try {
 //		localConn = DriverManager.getConnection("jdbc:mysql://46.239.118.12:3306/prototyp_bibliotek","frud", "ultrajacka112");
-	    localConn = DriverManager.getConnection("jdbc:mysql://192.168.1.15:3306/prototyp_bibliotek","frud", "ultrajacka112");
+//	    localConn = DriverManager.getConnection("jdbc:mysql://192.168.1.15:3306/prototyp_bibliotek","frud", "ultrajacka112");
 //		localConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/prototyp_bibliotek","root", "chocs");
-//	    localConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prototyp_bibliotek","root", "");
+	    localConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prototyp_bibliotek","root", "");
 	    
 	} catch (SQLException se) {
 	    System.out.println("Couldn't connect: print out a stack trace and exit.");
@@ -236,6 +236,21 @@ public class DBConnection {
 		try{
 			preparedStatement = connection.prepareStatement("SELECT * from user WHERE UserName = ?");
 			preparedStatement.setString(1, userName);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()){
+				exists = true;
+			}
+		}
+		catch(SQLException sqle){
+			System.out.println(sqle.getMessage());
+		}
+		return exists;
+	}
+	public boolean checkIfLiteratureExistsDB(String title){
+		boolean exists = false;
+		try{
+			preparedStatement = connection.prepareStatement("SELECT * from litterature WHERE Titel = ?");
+			preparedStatement.setString(1, title);
 			resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()){
 				exists = true;

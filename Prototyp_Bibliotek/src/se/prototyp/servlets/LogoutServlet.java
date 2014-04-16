@@ -18,8 +18,10 @@ public class LogoutServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		if(session != null){
+			// Här sker utloggningen av nuvarande session (användare)
 			session.invalidate();
 		}
+		// Användaren skickas sedan till login-sidan
 		RequestDispatcher dispatcher;
 		dispatcher = req.getRequestDispatcher("login.jsp");
 		dispatcher.forward(req, resp);

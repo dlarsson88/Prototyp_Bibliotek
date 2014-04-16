@@ -1,3 +1,5 @@
+/* En klass för att hämta ut användarinformation ur databasen */
+
 package se.prototyp.services;
 
 import java.util.ArrayList;

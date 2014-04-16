@@ -20,10 +20,11 @@ public class GetLoansServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		GetLoansService getLoans = new GetLoansService();
+		// Vi hämtar alla lån ifrån databasen och spar dem i en lista.
 		ArrayList<String> loans = getLoans.getLoans();
 		
 		RequestDispatcher dispatcher;
-	
+		
 		dispatcher = req.getRequestDispatcher("main.jsp");
 		dispatcher.forward(req, resp);
 		return;

@@ -1,3 +1,5 @@
+/* En klass för att uppdatera användarinformation */
+
 package se.prototyp.services;
 
 public class EditUserService extends se.prototyp.database.DBConnection {

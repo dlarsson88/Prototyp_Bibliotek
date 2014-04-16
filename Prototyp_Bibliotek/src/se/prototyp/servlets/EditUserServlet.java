@@ -21,8 +21,11 @@ public class EditUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		// Vi spar nuvarande användares id från sessionen.
 		String StringId = (String) session.getAttribute("savedUserId");
 		int id = Integer.parseInt(StringId);
+		// Vi hämtar den data användaren skrivit in i formuläret och spar den i strängar.
+		// Detta är den data användaren vill uppdatera sina uppgifter med.
 		String userName = (String) req.getParameter("userNameEdit");
 		String firstName = (String) req.getParameter("firstNameEdit");
 		String familyName = (String) req.getParameter("familyNameEdit");

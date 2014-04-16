@@ -1,3 +1,5 @@
+/* En klass för att se om en viss användare redan existerar i databasen */
+
 package se.prototyp.services;
 import se.prototyp.database.DBOperations;
 

@@ -1,3 +1,5 @@
+/* En klass för att lägga till nya användare till databasen */
+
 package se.prototyp.services;
 
 import se.prototyp.database.DBOperations;

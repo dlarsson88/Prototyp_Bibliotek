@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import se.prototyp.services.AddLiteratureService;
+import se.prototyp.services.DBConsistencyService;
 
 @WebServlet("/catalog")
 public class AddLiteratureServlet extends HttpServlet {
@@ -20,13 +21,23 @@ public class AddLiteratureServlet extends HttpServlet {
 		AddLiteratureService addLiteratureService = new AddLiteratureService();
 		RequestDispatcher dispatcher;
 		
+		// Vi kollar om boken redan existerar i databasen. 
+		DBConsistencyService consistency = new DBConsistencyService();
+		if(consistency.checkIfLiteratureExists(title)){
+			req.setAttribute("svar", "Verket du försöker lägga till finns redan i databasen.");
+			dispatcher = req.getRequestDispatcher("main.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		// Vi kollar om boken lyckas läggas in i databasen.
 		if(addLiteratureService.addLiterature(title) > 0){
+			req.setAttribute("svar", "Verket har lagts till i databasen.");
 			dispatcher = req.getRequestDispatcher("main.jsp");
 			dispatcher.forward(req, resp);
 			return;
 		}
 		else{
-			System.out.println("Ej tillagd.");
+			req.setAttribute("svar", "Verket kunde inte läggas till.");
 			dispatcher = req.getRequestDispatcher("main.jsp");
 			dispatcher.forward(req, resp);
 			return;
